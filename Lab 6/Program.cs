@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Lab_6
 {
 
 
 
-	class Program
+    class Program
 	{
 		static string mainMenuText = @"1. Работа с массивом символов
 2. Работа со строками
@@ -34,7 +31,7 @@ namespace Lab_6
 		static char[] vowels = { 'А', 'а', 'Е', 'е', 'И', 'и', 'О', 'о', 'У', 'у', 'Э', 'э', 'Ю', 'ю', 'Я', 'я' };
 		static Random rnd = new Random();
 
-		static string str;
+		static string str = "";
 
 		static void Main(string[] args)
 		{
@@ -49,7 +46,13 @@ namespace Lab_6
 
 		static bool DelLastVowel(ref char[] arr)
 		{
-			int ind = -1, new_ind;
+            if (str == null)
+            {
+                Console.WriteLine("Массив пуст!");
+                return false;
+            }
+
+            int ind = -1, new_ind;
 			foreach (char letter in vowels)
 			{
 				new_ind = Array.LastIndexOf(arr, letter);
@@ -73,6 +76,8 @@ namespace Lab_6
 			return true;
 		}
 
+        
+
 		static char[] Create1DArr(int size, bool manual_entry = false)
 		{
 			char[] arr = new char[size];
@@ -95,6 +100,12 @@ namespace Lab_6
 		}
 		static void PrintArray<T>(T[] arr)
 		{
+            if (arr == null)
+            {
+                Console.WriteLine("Массив пуст!");
+                return;
+            }
+
 			foreach (var item in arr)
 			{
 				Console.Write("{0,3} ", item);
@@ -145,14 +156,14 @@ namespace Lab_6
 						Console.Clear();
 						if (DelLastVowel(ref arr))
 							Console.WriteLine("Гласная удалена");
-						else Console.WriteLine("В слове нет гласных \n");
+						else Console.WriteLine("В массиве нет гласных \n");
 						break;
 
-					case ConsoleKey.D4:
-						Console.Clear();
-						return;
+                    case ConsoleKey.D4:
+                        Console.Clear();
+                        return;
 
-					default:
+                    default:
 						Console.Clear();
 						break;
 
@@ -182,6 +193,11 @@ namespace Lab_6
 
 					case ConsoleKey.D3:
 						Environment.Exit(0);
+						break;
+
+
+                        default:
+						Console.Clear();
 						break;
 
 				}
@@ -215,6 +231,11 @@ namespace Lab_6
 
 					case ConsoleKey.D2:
 						Console.Clear();
+                        if (str.Length == 0)
+                        {
+                            Console.WriteLine("Строка пуста!");
+                            break;
+                        }
 						Console.WriteLine(str);
 						break;
 
@@ -224,8 +245,8 @@ namespace Lab_6
 						break;
 
 					case ConsoleKey.D4:
-						Environment.Exit(0);
-						break;
+                        Console.Clear();
+						return;
 
 					default:
 						Console.Clear();
@@ -235,31 +256,30 @@ namespace Lab_6
 		}
         static bool ManualEntryDialog()
         {
-            Console.WriteLine(dialog_input);
-
-            ConsoleKey choice;
-            choice = Console.ReadKey().Key;
-
-            bool f = false;
-            switch (choice)
+            while (true)
             {
+                Console.WriteLine(dialog_input);
 
-                case ConsoleKey.D1:
-                    Console.Clear();
-                    f = true;
-                    break;
+                ConsoleKey choice;
+                choice = Console.ReadKey().Key;
 
-                case ConsoleKey.D2:
-                    f = false;
-                    break;
+                switch (choice)
+                {
 
-                default:
-                    Console.Clear();
-                    break;
+                    case ConsoleKey.D1:
+                        Console.Clear();
+                        return true;
+
+                    case ConsoleKey.D2:
+                        return false;
+
+                    default:
+                        Console.Clear();
+                        break;
+                }
+                Console.Write('\b');
             }
-            Console.Write('\b');
-
-            return f;
+            
         }
 		static string CreateString(int num, bool man_entry = false)
 		{
@@ -283,8 +303,16 @@ namespace Lab_6
 			return str.ToString();
 		}
 
-		static void Invert(ref string str)
-		{
+        static void Invert(ref string str)
+        {
+            if (str.Length == 0)
+            {
+                Console.WriteLine("Строка пуста!");
+                return;
+            }
+
+            if (str.IndexOf('.') == str.LastIndexOf('.')) return;
+
 			string sec = str.Substring(str.LastIndexOf('.',str.Length-2) +1);	// Последнее предложение
 			string first = str.Remove(str.IndexOf('.') + 1);					// Первое предложение
 			str = str.Replace(first, sec);										// Замена первого на последнее
