@@ -29,6 +29,8 @@ namespace Lab_6
 		static string dialog_input = @"1. Ввод массива вручную
 2. Инициализация при помощи ДСЧ";
 
+		static string sentence = "Надстройка нетривиальна. Созерцание непредсказуемо. Структурализм абстрактен.";
+
 		static char[] vowels = { 'А', 'а', 'Е', 'е', 'И', 'и', 'О', 'о', 'У', 'у', 'Э', 'э', 'Ю', 'ю', 'Я', 'я' };
 		static Random rnd = new Random();
 
@@ -179,16 +181,9 @@ namespace Lab_6
 						break;
 
 					case ConsoleKey.D3:
-						Console.Clear();
-						break;
-
-					case ConsoleKey.D4:
 						Environment.Exit(0);
 						break;
 
-					default:
-						Console.Clear();
-						break;
 				}
 			}
 		}
@@ -205,11 +200,15 @@ namespace Lab_6
 				{
 					case ConsoleKey.D1:
 						Console.Clear();
-						Console.Write("Кол-во предложений в строке: ");
-						int num;
-						ReadInt(out num);
-						Console.Clear();
-						str = CreateString(num, ManualEntryDialog());
+						int num=0;
+						bool man_entry = ManualEntryDialog();
+						if (man_entry)
+						{
+							Console.Write("Кол-во предложений в строке: ");
+							ReadInt(out num);
+							Console.Clear();
+						}
+						str = CreateString(num, man_entry);
 						Console.Clear();
 						Console.WriteLine("Массив создан \n");
 						break;
@@ -221,6 +220,7 @@ namespace Lab_6
 
 					case ConsoleKey.D3:
 						Console.Clear();
+						Invert(ref str);
 						break;
 
 					case ConsoleKey.D4:
@@ -261,16 +261,36 @@ namespace Lab_6
 
             return f;
         }
-		static string CreateString(int num, bool manual_entry)
+		static string CreateString(int num, bool man_entry = false)
 		{
+			if (!man_entry) return sentence;
+
 			StringBuilder str = new StringBuilder();
 			for(int i = 0; i < num; i++)
 			{
 				Console.Write($"{i}-e: ");
-				str.Append(Console.ReadLine());
+				string strbuf = Console.ReadLine();
+				strbuf = strbuf.Trim('.');
+				if (strbuf.Length == 0) 
+				{
+					Console.WriteLine("Строка пуста. Повторите ввод.");
+					i--; 
+					continue;
+				}
+				str.Append(strbuf);
 				str.Append(".");
 			}
 			return str.ToString();
+		}
+
+		static void Invert(ref string str)
+		{
+			string sec = str.Substring(str.LastIndexOf('.',str.Length-2) +1);	// Последнее предложение
+			string first = str.Remove(str.IndexOf('.') + 1);					// Первое предложение
+			str = str.Replace(first, sec);										// Замена первого на последнее
+			str = str.Remove(str.LastIndexOf('.', str.Length - 2) + 1);         // Удаление последнего
+			str = str.Insert(str.Length, first);								// Вставка первого в конец
+
 		}
     }
 
