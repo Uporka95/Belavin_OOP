@@ -46,6 +46,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Diags\Diag2D.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Diags\Diag2D.Designer.cs">
+      <DependentUpon>Diag2D.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Diags\DiagJag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Diags\DiagJag.Designer.cs">
+      <DependentUpon>DiagJag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Array1DPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Array1DPanel.Designer.cs">
+      <DependentUpon>Array1DPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Array2DPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Array2DPanel.Designer.cs">
+      <DependentUpon>Array2DPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ArrayJagPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\ArrayJagPanel.Designer.cs">
+      <DependentUpon>ArrayJagPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="ArrayManager.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -53,10 +83,34 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Diags\Diag1D.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Diags\Diag1D.Designer.cs">
+      <DependentUpon>Diag1D.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Diags\Diag2D.resx">
+      <DependentUpon>Diag2D.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Diags\DiagJag.resx">
+      <DependentUpon>DiagJag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Array1DPanel.resx">
+      <DependentUpon>Array1DPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Array2DPanel.resx">
+      <DependentUpon>Array2DPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ArrayJagPanel.resx">
+      <DependentUpon>ArrayJagPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Diags\Diag1D.resx">
+      <DependentUpon>Diag1D.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -79,6 +133,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\JagArray.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1DArray.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\2DArray.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
