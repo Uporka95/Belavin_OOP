@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.IO;
 
 namespace Lab_7
 {
@@ -10,15 +12,15 @@ namespace Lab_7
 	{
 		static Random rnd = new Random();
 
-		static int[] Create1DArr(int size, bool manual_entry = false)
+		static public int[] Create1DArr(bool manual_entry = false)
 		{
-			int[] arr = new int[size];
+			int[] arr = new int[rnd.Next(50)];
 			int res;
 
-			for (int i = 0; i < size; i++)
+			for (int i = 0; i < arr.Length; i++)
 			{
 				if (manual_entry)
-				{ 
+				{
 				}
 				else arr[i] = rnd.Next(50);
 			}
@@ -26,7 +28,7 @@ namespace Lab_7
 			return arr;
 		}
 
-		static int[,] Create2DArr(int str, int col, bool manual_entry = false)
+		static public int[,] Create2DArr(int str, int col, bool manual_entry = false)
 		{
 			int[,] arr = new int[str, col];
 			int res;
@@ -42,7 +44,7 @@ namespace Lab_7
 			return arr;
 		}
 
-		static int[][] CreateJagArr(int col, bool manual_entry = false)
+		static public int[][] CreateJagArr(int col, bool manual_entry = false)
 		{
 			int[][] arr = new int[col][];
 			int res;
@@ -62,7 +64,7 @@ namespace Lab_7
 			return arr;
 		}
 
-		static int Mean(params int[] values)
+		static public int Mean(params int[] values)
 		{
 			int res = 0;
 
@@ -74,7 +76,8 @@ namespace Lab_7
 			return res /= values.Length;
 		}
 
-		static bool DeleteMean(ref int[] arr)
+
+		static public bool DeleteMean(ref int[] arr)
 		{
 
 			bool mean_found = false;
@@ -112,7 +115,7 @@ namespace Lab_7
 
 		}
 
-		static void AddCol2D(ref int[,] arr)
+		static public void AddCol2D(ref int[,] arr)
 		{
 			int[,] new_arr = new int[arr.GetLength(0), arr.GetLength(1) + 1];
 
@@ -132,7 +135,7 @@ namespace Lab_7
 			arr = new_arr;
 		}
 
-		static List<int> FindK(int[][] arr, int k)
+		static public List<int> FindK(int[][] arr, int k)
 		{
 
 			List<int> ind = new List<int>();
@@ -148,7 +151,7 @@ namespace Lab_7
 			return ind;
 		}
 
-		static bool DelStrJag(ref int[][] arr, int k)
+		static public bool DelStrJag(ref int[][] arr, int k)
 		{
 			int[][] new_arr;
 			List<int> ind = FindK(arr, k);
@@ -173,6 +176,114 @@ namespace Lab_7
 				arr = new_arr;
 
 			return true;
+		}
+
+		static public string PrintArray(int[] arr)
+		{
+			if (arr == null) return "";
+			StringBuilder str = new StringBuilder();
+
+			foreach (var item in arr)
+			{
+				str.AppendFormat("{0,3} ", item);
+			}
+			return str.ToString();
+		}
+
+		static public string PrintArray(int[][] arr)
+		{
+			if (arr == null) return "";
+			StringBuilder str = new StringBuilder();
+
+			foreach (int[] i in arr)
+			{
+				foreach (int j in i)
+				{
+					str.AppendFormat("{0,3} ", j);
+				}
+				str.AppendLine();
+			}
+			return str.ToString();
+
+		}
+
+		static public string PrintArray(int[,] arr)
+		{
+			if (arr == null) return "";
+			StringBuilder str = new StringBuilder();
+
+			for (int i = 0; i < arr.GetLength(0); i++)
+			{
+				for (int j = 0; j < arr.GetLength(1); j++)
+				{
+					str.AppendFormat("{0,-3} ", arr[i, j]);
+				}
+				str.AppendLine();
+			}
+			return str.ToString();
+		}
+
+		static private bool Null<T>(T obj)
+		{
+			if (obj == null)
+			{
+				MessageBox.Show("Массив пуст!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return true;
+			}
+			return false;
+		}
+
+		static public int [,] ParseAs2D(string str)
+		{
+			string[] rows = str.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+			if (str.Length == 0) return null;
+			string[] values_buf = rows[0].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+			int[,] arr = new int[rows.Length, values_buf.Length];
+
+			for (int i = 0; i < arr.GetLength(0); i++)
+			{
+				rows[i] = rows[i].Trim('\n');
+				values_buf = rows[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+				for (int j = 0; j < arr.GetLength(1); j++)
+					arr[i, j] = Convert.ToInt32(values_buf[j]);
+			}
+
+			return arr;
+		}
+
+		static public int[] ParseAs1D(string str)
+		{
+			if (str.Length == 0) return null;
+			string[] values = str.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+			int[] arr = new int[values.Length];
+
+			for (int i = 0; i < arr.GetLength(0); i++)
+					arr[i] = Convert.ToInt32(values[i]);
+			
+
+			return arr;
+		}
+
+		static public int[][] ParseAsJag(string str)
+		{
+			if (str.Length == 0) return null;
+			string[] rows = str.Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+
+			string[] values_buf = rows[0].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+			int[][] arr = new int[rows.Length][];
+
+			for (int i = 0; i < arr.GetLength(0); i++)
+			{
+				rows[i] = rows[i].Trim('\n');
+				values_buf = rows[i].Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+				arr[i] = new int[values_buf.Length];
+
+				for (int j = 0; j < arr[i].Length; j++)
+					arr[i][j] = Convert.ToInt32(values_buf[j]);
+			}
+
+			return arr;
 		}
 	}
 }

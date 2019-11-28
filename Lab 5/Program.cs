@@ -324,9 +324,9 @@ namespace ООП_19
 			return arr;
 		}
 
-		static int[,] Create2DArr(int str, int col, bool manual_entry = false)
+		static int[,] Create2DArr(int col, int str, bool manual_entry = false)
 		{
-			int[,] arr = new int[str, col];
+			int[,] arr = new int[col, str];
 			int res;
 
 			for (int i = 0; i < str; i++)

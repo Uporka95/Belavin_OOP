@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4762EDF2-166B-4E6E-84C4-0AB4E5CED563}</ProjectGuid>
+    <ProjectGuid>{4D1F821F-7946-41CE-BAD7-A5CA0FDFBD72}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Lab_7</RootNamespace>
-    <AssemblyName>Lab 7</AssemblyName>
+    <RootNamespace>Lab_8</RootNamespace>
+    <AssemblyName>Lab 8</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,80 +46,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Diags\Diag2D.cs">
+    <Compile Include="DataAddDiag.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Diags\Diag2D.Designer.cs">
-      <DependentUpon>Diag2D.cs</DependentUpon>
+    <Compile Include="DataAddDiag.Designer.cs">
+      <DependentUpon>DataAddDiag.cs</DependentUpon>
     </Compile>
-    <Compile Include="Diags\DiagJag.cs">
+    <Compile Include="Database.cs" />
+    <Compile Include="FindDiag.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Diags\DiagJag.Designer.cs">
-      <DependentUpon>DiagJag.cs</DependentUpon>
+    <Compile Include="FindDiag.Designer.cs">
+      <DependentUpon>FindDiag.cs</DependentUpon>
     </Compile>
-    <Compile Include="EnterK.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EnterK.Designer.cs">
-      <DependentUpon>EnterK.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\Array1DPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\Array1DPanel.Designer.cs">
-      <DependentUpon>Array1DPanel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\Array2DPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\Array2DPanel.Designer.cs">
-      <DependentUpon>Array2DPanel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControls\ArrayJagPanel.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControls\ArrayJagPanel.Designer.cs">
-      <DependentUpon>ArrayJagPanel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ArrayManager.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Diags\Diag1D.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Diags\Diag1D.Designer.cs">
-      <DependentUpon>Diag1D.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Diags\Diag2D.resx">
-      <DependentUpon>Diag2D.cs</DependentUpon>
+    <EmbeddedResource Include="DataAddDiag.resx">
+      <DependentUpon>DataAddDiag.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Diags\DiagJag.resx">
-      <DependentUpon>DiagJag.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EnterK.resx">
-      <DependentUpon>EnterK.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Array1DPanel.resx">
-      <DependentUpon>Array1DPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\Array2DPanel.resx">
-      <DependentUpon>Array2DPanel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ArrayJagPanel.resx">
-      <DependentUpon>ArrayJagPanel.cs</DependentUpon>
+    <EmbeddedResource Include="FindDiag.resx">
+      <DependentUpon>FindDiag.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Diags\Diag1D.resx">
-      <DependentUpon>Diag1D.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -129,7 +84,6 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
