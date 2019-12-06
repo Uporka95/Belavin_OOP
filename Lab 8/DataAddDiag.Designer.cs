@@ -31,7 +31,6 @@
 			this.mtName = new System.Windows.Forms.MaskedTextBox();
 			this.mtAuthor = new System.Windows.Forms.MaskedTextBox();
 			this.mtEditor = new System.Windows.Forms.MaskedTextBox();
-			this.mtEdition = new System.Windows.Forms.MaskedTextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
@@ -39,10 +38,11 @@
 			this.bRand = new System.Windows.Forms.Button();
 			this.bInput = new System.Windows.Forms.Button();
 			this.gbData = new System.Windows.Forms.GroupBox();
-			this.rbToBegin = new System.Windows.Forms.RadioButton();
-			this.rbToEnd = new System.Windows.Forms.RadioButton();
-			this.rbToPos = new System.Windows.Forms.RadioButton();
 			this.numPos = new System.Windows.Forms.NumericUpDown();
+			this.rbToPos = new System.Windows.Forms.RadioButton();
+			this.rbToEnd = new System.Windows.Forms.RadioButton();
+			this.rbToBegin = new System.Windows.Forms.RadioButton();
+			this.dtpFrom = new System.Windows.Forms.DateTimePicker();
 			this.gbData.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numPos)).BeginInit();
 			this.SuspendLayout();
@@ -77,17 +77,6 @@
 			this.mtEditor.Name = "mtEditor";
 			this.mtEditor.Size = new System.Drawing.Size(118, 20);
 			this.mtEditor.TabIndex = 2;
-			// 
-			// mtEdition
-			// 
-			this.mtEdition.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-			this.mtEdition.Location = new System.Drawing.Point(118, 97);
-			this.mtEdition.Mask = "00/00/0000";
-			this.mtEdition.Name = "mtEdition";
-			this.mtEdition.Size = new System.Drawing.Size(118, 20);
-			this.mtEdition.TabIndex = 3;
-			this.mtEdition.ValidatingType = typeof(System.DateTime);
 			// 
 			// label1
 			// 
@@ -153,6 +142,7 @@
 			this.gbData.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+			this.gbData.Controls.Add(this.dtpFrom);
 			this.gbData.Controls.Add(this.numPos);
 			this.gbData.Controls.Add(this.rbToPos);
 			this.gbData.Controls.Add(this.rbToEnd);
@@ -161,7 +151,6 @@
 			this.gbData.Controls.Add(this.mtAuthor);
 			this.gbData.Controls.Add(this.mtEditor);
 			this.gbData.Controls.Add(this.label4);
-			this.gbData.Controls.Add(this.mtEdition);
 			this.gbData.Controls.Add(this.label3);
 			this.gbData.Controls.Add(this.label1);
 			this.gbData.Controls.Add(this.label2);
@@ -171,6 +160,33 @@
 			this.gbData.TabIndex = 10;
 			this.gbData.TabStop = false;
 			this.gbData.Text = "Данные";
+			// 
+			// numPos
+			// 
+			this.numPos.Location = new System.Drawing.Point(116, 181);
+			this.numPos.Name = "numPos";
+			this.numPos.Size = new System.Drawing.Size(120, 20);
+			this.numPos.TabIndex = 11;
+			// 
+			// rbToPos
+			// 
+			this.rbToPos.AutoSize = true;
+			this.rbToPos.Location = new System.Drawing.Point(9, 181);
+			this.rbToPos.Name = "rbToPos";
+			this.rbToPos.Size = new System.Drawing.Size(79, 17);
+			this.rbToPos.TabIndex = 10;
+			this.rbToPos.Text = "В позицию";
+			this.rbToPos.UseVisualStyleBackColor = true;
+			// 
+			// rbToEnd
+			// 
+			this.rbToEnd.AutoSize = true;
+			this.rbToEnd.Location = new System.Drawing.Point(9, 158);
+			this.rbToEnd.Name = "rbToEnd";
+			this.rbToEnd.Size = new System.Drawing.Size(65, 17);
+			this.rbToEnd.TabIndex = 9;
+			this.rbToEnd.Text = "В конец";
+			this.rbToEnd.UseVisualStyleBackColor = true;
 			// 
 			// rbToBegin
 			// 
@@ -184,32 +200,12 @@
 			this.rbToBegin.Text = "В начало";
 			this.rbToBegin.UseVisualStyleBackColor = true;
 			// 
-			// rbToEnd
+			// dtpFrom
 			// 
-			this.rbToEnd.AutoSize = true;
-			this.rbToEnd.Location = new System.Drawing.Point(9, 158);
-			this.rbToEnd.Name = "rbToEnd";
-			this.rbToEnd.Size = new System.Drawing.Size(65, 17);
-			this.rbToEnd.TabIndex = 9;
-			this.rbToEnd.Text = "В конец";
-			this.rbToEnd.UseVisualStyleBackColor = true;
-			// 
-			// rbToPos
-			// 
-			this.rbToPos.AutoSize = true;
-			this.rbToPos.Location = new System.Drawing.Point(9, 181);
-			this.rbToPos.Name = "rbToPos";
-			this.rbToPos.Size = new System.Drawing.Size(79, 17);
-			this.rbToPos.TabIndex = 10;
-			this.rbToPos.Text = "В позицию";
-			this.rbToPos.UseVisualStyleBackColor = true;
-			// 
-			// numPos
-			// 
-			this.numPos.Location = new System.Drawing.Point(116, 181);
-			this.numPos.Name = "numPos";
-			this.numPos.Size = new System.Drawing.Size(120, 20);
-			this.numPos.TabIndex = 11;
+			this.dtpFrom.Location = new System.Drawing.Point(118, 100);
+			this.dtpFrom.Name = "dtpFrom";
+			this.dtpFrom.Size = new System.Drawing.Size(118, 20);
+			this.dtpFrom.TabIndex = 12;
 			// 
 			// DataAddDiag
 			// 
@@ -234,7 +230,6 @@
 		private System.Windows.Forms.MaskedTextBox mtName;
 		private System.Windows.Forms.MaskedTextBox mtAuthor;
 		private System.Windows.Forms.MaskedTextBox mtEditor;
-		private System.Windows.Forms.MaskedTextBox mtEdition;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label3;
@@ -246,5 +241,6 @@
 		public System.Windows.Forms.RadioButton rbToPos;
 		public System.Windows.Forms.RadioButton rbToEnd;
 		public System.Windows.Forms.RadioButton rbToBegin;
+		public System.Windows.Forms.DateTimePicker dtpFrom;
 	}
 }

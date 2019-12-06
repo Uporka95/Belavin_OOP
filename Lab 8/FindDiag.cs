@@ -12,6 +12,7 @@ namespace Lab_8
 {
 	public partial class FindDiag : Form
 	{
+		BindingSource source = new BindingSource();
 		public FindDiag()
 		{
 			InitializeComponent();
@@ -20,6 +21,10 @@ namespace Lab_8
 		private void bOK_Click(object sender, EventArgs e)
 		{
 			
+			if (rbFindByAuthor.Checked) source.DataSource = Database.FindByAuthor(mtName.Text);
+			if (rbFindByTime.Checked) source.DataSource = Database.FindByDate(dtpFrom.Value, dtpTo.Value);
+			dataGridView1.DataSource = source;
+			source.ResetBindings(false);
 		}
 	}
 }

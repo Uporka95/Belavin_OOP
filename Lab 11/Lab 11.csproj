@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4D1F821F-7946-41CE-BAD7-A5CA0FDFBD72}</ProjectGuid>
+    <ProjectGuid>{D13DDD82-84C4-426F-83F5-A71328022D91}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Lab_8</RootNamespace>
-    <AssemblyName>Lab 8</AssemblyName>
+    <RootNamespace>Lab_11</RootNamespace>
+    <AssemblyName>Lab 11</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -46,33 +46,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataAddDiag.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DataAddDiag.Designer.cs">
-      <DependentUpon>DataAddDiag.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Database.cs" />
-    <Compile Include="FindDiag.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FindDiag.Designer.cs">
-      <DependentUpon>FindDiag.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Factory.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Insurance.cs" />
+    <Compile Include="Library.cs" />
+    <Compile Include="Organization.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="DataAddDiag.resx">
-      <DependentUpon>DataAddDiag.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FindDiag.resx">
-      <DependentUpon>FindDiag.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="Shipbuilding.cs" />
+    <Compile Include="TestCollections.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -85,10 +72,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Properties\DataSources\Book.datasource" />
-    <None Include="Properties\DataSources\Database.datasource" />
-    <None Include="Properties\DataSources\Lab_8.Properties.Resources.datasource" />
-    <None Include="Properties\DataSources\Lab_8.Properties.Settings.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

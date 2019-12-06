@@ -13,15 +13,18 @@ namespace Lab_8
 		ToBegin, ToEnd
 	}
 
+
+
 	[Serializable]
-	public struct Book
+	public class Book
 	{
-		public Book(string name, string author, string editor, string edition) 
+		public Book(string name, string author, string editor, DateTime edition) 
 		{
 			Name = name;
 			Author = author;
 			Editor = editor;
-			Edition = DateTime.Parse(edition);
+			Edition = edition;
+			num++;
 		}
 
 		public string Name { get; set; }
@@ -30,38 +33,38 @@ namespace Lab_8
 		public DateTime Edition { get; set; }
 
 		[NonSerialized]
-		static string num;
+		static int num;
 	}
 	public static class Database
 	{
 
-		static List<Book> database = new List<Book>();
-		static string PathToBin { set; get; }
+		public static List<Book> database = new List<Book>();
+		public static string PathToBin { set; get; }
 
-		public static void ReadData(string path)
+		public static bool ReadData(string path)
 		{
 			PathToBin = path;
-			Book buf;
-			FileStream fs = new FileStream(PathToBin, FileMode.Open);
+			
+			FileStream fs = new FileStream(PathToBin, FileMode.OpenOrCreate, FileAccess.ReadWrite);
 			BinaryFormatter bf = new BinaryFormatter();
-
-			while (true)
+			if (fs.Length != 0)
 			{
-				buf = (Book)bf.Deserialize(fs);
-				if (buf.Author == null) break;
-				database.Add(buf);
+				database = (List<Book>)bf.Deserialize(fs);
+				fs.Close();
 			}
+			else return false;
+			fs.Close();
+			return true;
 		}
 
-		static void OverwriteData()
+		static public bool OverwriteData(string path)
 		{
-			FileStream fs = new FileStream(PathToBin, FileMode.Truncate);
+			FileStream fs = new FileStream(path, FileMode.Truncate);
 			BinaryFormatter bf = new BinaryFormatter();
 
-			foreach (Book item in database)
-			{
-				bf.Serialize(fs, item);
-			}
+			bf.Serialize(fs, database);
+			fs.Close();
+			return true;
 		}
 
 		public static void Add(Book book, Position pos)
@@ -79,33 +82,73 @@ namespace Lab_8
 
 		}
 
-		public static void DeleteByPos(int pos)
+		public static bool DeleteByPos(int pos)
 		{
+			if (pos + 1 > database.Count) return false;
 			database.RemoveAt(pos);
+			return true;
 		}
 
-		public static void DeleteByName(string name)
+		public static bool DeleteByName(string name)
 		{
-			foreach (Book item in database)
+			bool found = false;
+			foreach (Book item in database.ToArray())
 			{
-				if (item.Name == name) database.Remove(item);
+				if (item.Name == name)
+				{
+					database.Remove(item);
+					found = true;
+				}
 			}
+			return found;
 		}
 
 
-		public static void FindByAuthor(string str)
+		public static List<Book> FindByAuthor(string str)
 		{
 
-			var selectedBooks = from i in database where i.Author == str select i;
-
+			IEnumerable<Book> selectedBooks = from i in database where i.Author == str select i;
+			var list = new List<Book>(selectedBooks);
+			if (list.Count == 0) return null;
+			return new List<Book>(selectedBooks);
 		}
 
-		public static void FindByDate( DateTime min, DateTime max)
+		public static List<Book> FindByName(string str)
 		{
 
-			//var selectedBooks = from i in database where (
-			//					select i;
+			IEnumerable<Book> selectedBooks = from i in database where i.Name == str select i;
+			var list = new List<Book>(selectedBooks);
+			if (list.Count == 0) return null;
+			return new List<Book>(selectedBooks);
+		}
 
+		public static List<Book> FindByEditor(string str)
+		{
+			IEnumerable<Book> selectedBooks = from i in database where i.Editor == str select i;
+			var list = new List<Book>(selectedBooks);
+			if (list.Count == 0) return null;
+			return new List<Book>(selectedBooks);
+		}
+
+		public static List<Book> FindByDate( DateTime min, DateTime max)
+		{
+
+			IEnumerable<Book> selectedBooks = from i in database
+								where DateInRange(min,max,i.Edition)
+								select i;
+
+			var list = new List<Book>(selectedBooks);
+			if (list.Count == 0) return null;
+			return new List<Book>(selectedBooks);
+		}
+
+		public static bool DateInRange(DateTime min, DateTime max, DateTime x)
+		{
+			if (min.CompareTo(x) <= 0 && max.CompareTo(x) >= 0)
+				return true;
+			return false;
+
+			
 		}
 	}
 }

@@ -16,7 +16,6 @@ namespace Lab_8
 		public DataAddDiag()
 		{
 			InitializeComponent();
-			mtEdition.KeyDown += mtName_KeyDown;
 			mtAuthor.KeyDown += mtName_KeyDown;
 			mtEditor.KeyDown += mtName_KeyDown;
 			Load += delegate { mtName.Select(); };
@@ -29,10 +28,7 @@ namespace Lab_8
 				MessageBox.Show("Форма не заполнена!", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
 				return;
 			}
-			book_ret.Name = mtName.Text;
-			book_ret.Author = mtAuthor.Text;
-			book_ret.Editor = mtEditor.Text;
-			book_ret.Edition = DateTime.Parse(mtEdition.Text);
+			book_ret = new Book(mtName.Text, mtAuthor.Text, mtEditor.Text, dtpFrom.Value);
 		
 			DialogResult = DialogResult.OK;
 			this.Close();
