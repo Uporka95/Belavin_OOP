@@ -6,12 +6,21 @@ using System.Threading.Tasks;
 
 namespace Lab_11
 {
-	internal class Library : Organization
+	internal class Library : Organization, ICloneable
 	{
-		public Library(string name, int rt, int readers, int books) : base(name, rt)
+		static Random rnd = new Random(0);
+		private string[] rand_names = { "Читака", "Глобус", "СССР", "Ботан", "Курилка", "Школьная библиотека" };
+		public Library(string name, double rt, int readers, int books) : base(name, rt)
 		{
 			Readers = readers;
 			Books = books;
+		}
+		public Library() 
+		{
+			
+			Name = rand_names[rnd.Next(0, rand_names.Length - 1)];
+			Readers = rnd.Next(50, 5000);
+			Books = rnd.Next(1000, 10000);
 		}
 		public override string Name { get => base.name; protected set => base.name = String.Format($"библиотека '{value}'"); }
 	
@@ -34,6 +43,16 @@ namespace Lab_11
 		{
 			base.GetInfo();
 			Console.WriteLine("Кол-во читателей: " + Readers + ", Кол-во книг: " + Books + '\n');
+		}
+
+		public override string ToString()
+		{
+			return $"{Name}{rating},{Readers},{Books}";
+		}
+
+		public object Clone()
+		{
+			return new Library(this.Name, this.Rating, this.Readers, this.Books);
 		}
 	}
 }

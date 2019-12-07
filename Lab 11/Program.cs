@@ -18,5 +18,6 @@ namespace Lab_11
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new Form1());
 		}
+
 	}
 }

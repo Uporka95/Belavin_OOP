@@ -59,6 +59,7 @@ namespace Lab_8
 
 		static public bool OverwriteData(string path)
 		{
+			if(!File.Exists(path)) File.Create(path);
 			FileStream fs = new FileStream(path, FileMode.Truncate);
 			BinaryFormatter bf = new BinaryFormatter();
 

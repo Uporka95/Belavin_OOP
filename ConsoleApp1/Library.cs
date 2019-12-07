@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleApp1
 {
-	internal class Library : Organization
+	internal class Library : Organization, ICloneable
 	{
 		public Library(string name, int rt, int readers, int books) : base(name, rt)
 		{
@@ -34,6 +34,10 @@ namespace ConsoleApp1
 		{
 			base.GetInfo();
 			Console.WriteLine("Кол-во читателей: " + Readers + ", Кол-во книг: " + Books + '\n');
+		}
+		public object Clone()
+		{
+			return new Library(this.Name, this.Rating, this.Readers, this.Books);
 		}
 	}
 }

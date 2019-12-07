@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+			System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
 			this.bLoad = new System.Windows.Forms.Button();
 			this.bAdd = new System.Windows.Forms.Button();
 			this.bOverwrite = new System.Windows.Forms.Button();
@@ -47,9 +47,6 @@
 			this.rbToPos = new System.Windows.Forms.RadioButton();
 			this.rbToEnd = new System.Windows.Forms.RadioButton();
 			this.rbToBegin = new System.Windows.Forms.RadioButton();
-			this.mtName = new System.Windows.Forms.MaskedTextBox();
-			this.mtAuthor = new System.Windows.Forms.MaskedTextBox();
-			this.mtEditor = new System.Windows.Forms.MaskedTextBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
@@ -77,6 +74,9 @@
 			this.label6 = new System.Windows.Forms.Label();
 			this.dtpFrom = new System.Windows.Forms.DateTimePicker();
 			this.dtpTo = new System.Windows.Forms.DateTimePicker();
+			this.mtName = new System.Windows.Forms.TextBox();
+			this.mtEditor = new System.Windows.Forms.TextBox();
+			this.mtAuthor = new System.Windows.Forms.TextBox();
 			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.numDelByPos)).BeginInit();
@@ -140,6 +140,7 @@
 			// 
 			this.openFileDialog1.DefaultExt = "bin";
 			this.openFileDialog1.FileName = "data.bin";
+			this.openFileDialog1.InitialDirectory = "C:\\";
 			this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
 			// 
 			// dataGridView1
@@ -150,16 +151,16 @@
 			this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
 			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-			dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-			dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-			dataGridViewCellStyle4.Format = "d";
-			dataGridViewCellStyle4.NullValue = null;
-			dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-			dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-			dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-			this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+			dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+			dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+			dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+			dataGridViewCellStyle7.Format = "d";
+			dataGridViewCellStyle7.NullValue = null;
+			dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+			dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+			dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+			this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
 			this.dataGridView1.Location = new System.Drawing.Point(282, 7);
 			this.dataGridView1.Name = "dataGridView1";
 			this.dataGridView1.Size = new System.Drawing.Size(743, 585);
@@ -169,6 +170,7 @@
 			// 
 			this.saveFileDialog1.DefaultExt = "bin";
 			this.saveFileDialog1.FileName = "data.bin";
+			this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
 			// 
 			// groupBox1
 			// 
@@ -234,15 +236,15 @@
 			// 
 			// gbData
 			// 
+			this.gbData.Controls.Add(this.mtEditor);
+			this.gbData.Controls.Add(this.mtAuthor);
 			this.gbData.Controls.Add(this.dtpEditor);
 			this.gbData.Controls.Add(this.numPos);
+			this.gbData.Controls.Add(this.mtName);
 			this.gbData.Controls.Add(this.rbToPos);
 			this.gbData.Controls.Add(this.rbToEnd);
 			this.gbData.Controls.Add(this.rbToBegin);
-			this.gbData.Controls.Add(this.mtName);
-			this.gbData.Controls.Add(this.mtAuthor);
 			this.gbData.Controls.Add(this.bAdd);
-			this.gbData.Controls.Add(this.mtEditor);
 			this.gbData.Controls.Add(this.label4);
 			this.gbData.Controls.Add(this.label3);
 			this.gbData.Controls.Add(this.label1);
@@ -302,30 +304,6 @@
 			this.rbToBegin.TabStop = true;
 			this.rbToBegin.Text = "В начало";
 			this.rbToBegin.UseVisualStyleBackColor = true;
-			// 
-			// mtName
-			// 
-			this.mtName.Location = new System.Drawing.Point(118, 19);
-			this.mtName.Mask = ">L<?????????????????";
-			this.mtName.Name = "mtName";
-			this.mtName.Size = new System.Drawing.Size(118, 20);
-			this.mtName.TabIndex = 0;
-			// 
-			// mtAuthor
-			// 
-			this.mtAuthor.Location = new System.Drawing.Point(118, 45);
-			this.mtAuthor.Mask = ">L<?????????????????";
-			this.mtAuthor.Name = "mtAuthor";
-			this.mtAuthor.Size = new System.Drawing.Size(118, 20);
-			this.mtAuthor.TabIndex = 1;
-			// 
-			// mtEditor
-			// 
-			this.mtEditor.Location = new System.Drawing.Point(118, 71);
-			this.mtEditor.Mask = ">L<?????????????????";
-			this.mtEditor.Name = "mtEditor";
-			this.mtEditor.Size = new System.Drawing.Size(118, 20);
-			this.mtEditor.TabIndex = 2;
 			// 
 			// label4
 			// 
@@ -614,6 +592,27 @@
 			this.dtpTo.Size = new System.Drawing.Size(200, 20);
 			this.dtpTo.TabIndex = 13;
 			// 
+			// mtName
+			// 
+			this.mtName.Location = new System.Drawing.Point(90, 19);
+			this.mtName.Name = "mtName";
+			this.mtName.Size = new System.Drawing.Size(146, 20);
+			this.mtName.TabIndex = 11;
+			// 
+			// mtEditor
+			// 
+			this.mtEditor.Location = new System.Drawing.Point(90, 71);
+			this.mtEditor.Name = "mtEditor";
+			this.mtEditor.Size = new System.Drawing.Size(146, 20);
+			this.mtEditor.TabIndex = 15;
+			// 
+			// mtAuthor
+			// 
+			this.mtAuthor.Location = new System.Drawing.Point(90, 45);
+			this.mtAuthor.Name = "mtAuthor";
+			this.mtAuthor.Size = new System.Drawing.Size(146, 20);
+			this.mtAuthor.TabIndex = 16;
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -668,9 +667,6 @@
 		public System.Windows.Forms.RadioButton rbToPos;
 		public System.Windows.Forms.RadioButton rbToEnd;
 		public System.Windows.Forms.RadioButton rbToBegin;
-		private System.Windows.Forms.MaskedTextBox mtName;
-		private System.Windows.Forms.MaskedTextBox mtAuthor;
-		private System.Windows.Forms.MaskedTextBox mtEditor;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label1;
@@ -698,6 +694,9 @@
 		private System.Windows.Forms.Button bSearchByAuthor;
 		private System.Windows.Forms.TextBox tbAuthorSearch;
 		private System.Windows.Forms.Button bDelSelected;
+		private System.Windows.Forms.TextBox mtEditor;
+		private System.Windows.Forms.TextBox mtAuthor;
+		private System.Windows.Forms.TextBox mtName;
 	}
 }
 

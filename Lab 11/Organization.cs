@@ -8,17 +8,24 @@ namespace Lab_11
 {
 	internal class Organization : IComparable
 	{
+		static Random rnd = new Random();
 		protected string name;
-		protected int rating;
+		protected double rating;
 
-		public Organization(string name, int rt)
+		public Organization(string name, double rt)
 		{
 			Name = name;
 			Rating = rt;
 		}
 
+		public Organization()
+		{
+			
+			Rating  = rnd.Next(0, 4) + rnd.NextDouble();
+		}
+
 		public virtual string Name { get => name; protected set => name = String.Format($"'{value}'"); }
-		public int Rating { get => rating; protected set => rating = value; }
+		public double Rating { get => rating; protected set => rating = value; }
 		public virtual void GetService()
 		{
 			Console.WriteLine($"{Name} предоставляет вам услугу: ");
@@ -28,10 +35,14 @@ namespace Lab_11
 			Console.WriteLine($"Информация об организации {Name}:");
 			Console.WriteLine($"Рейтинг: {Rating}");
 		}
-		
+
 		public int CompareTo(object o)
 		{
 			return this.rating.CompareTo(((Organization)o).rating);
+		}
+		public override string ToString()
+		{
+			return $"{Name}{rating}";
 		}
 	}
 }

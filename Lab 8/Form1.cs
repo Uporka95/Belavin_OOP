@@ -37,6 +37,7 @@ namespace Lab_8
 			СlearAddFields();
 			source.ResetBindings(false);
 
+		
 			
 		}
 
@@ -59,7 +60,9 @@ namespace Lab_8
 
 		private void Form1_Load(object sender, EventArgs e)
 		{
-			
+			openFileDialog1.InitialDirectory = Application.StartupPath;
+			saveFileDialog1.InitialDirectory = Application.StartupPath;
+
 			source.DataSource = Database.database;
 			dataGridView1.DataSource = source;
 
@@ -78,15 +81,15 @@ namespace Lab_8
 		private void bOverwrite_Click(object sender, EventArgs e)
 		{
 			saveFileDialog1.ShowDialog();
-			Database.OverwriteData(saveFileDialog1.FileName);
+			
 		}
 
 
 		private bool CheckAddFields()
 		{
 			foreach (Control ctrl in gbData.Controls)
-				if (ctrl is MaskedTextBox mt)
-					if (!mt.MaskCompleted)
+				if (ctrl is TextBox mt)
+					if (mt.Text == "")
 					{
 						mt.Focus();
 						return false;
@@ -97,7 +100,7 @@ namespace Lab_8
 		private void СlearAddFields()
 		{
 			foreach (Control ctrl in gbData.Controls)
-				if (ctrl is MaskedTextBox mt)
+				if (ctrl is TextBox mt)
 					mt.Clear();
 
 		
@@ -190,6 +193,11 @@ namespace Lab_8
 				dataGridView1.DataSource = source;
 				source.ResetBindings(false);
 			}
+		}
+
+		private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+		{
+			Database.OverwriteData(saveFileDialog1.FileName);
 		}
 	}
 }

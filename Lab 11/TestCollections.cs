@@ -10,15 +10,13 @@ namespace Lab_11
 
 	class TestCollections
 	{
-		delegate string Tests();
-		Tests tests;
 		Stopwatch timer = new Stopwatch();
 		Random rnd = new Random();
 
-		private Queue<Organization> queue_orgs;
-		private Queue<string> queue_str;
-		private SortedDictionary<Organization, Library> sdict_orgs;
-		private SortedDictionary<string, Library> sdict_str;
+		public Queue<Organization> queue_orgs;
+		public Queue<string> queue_str;
+		public SortedDictionary<Organization, Library> sdict_orgs;
+		public SortedDictionary<string, Library> sdict_str;
 
 		private string[] rand_names = { "Читака", "Глобус", "СССР", "Ботан", "Курилка", "Школьная библиотека" };
 
@@ -28,14 +26,10 @@ namespace Lab_11
 			queue_str = new Queue<string>(num);
 			sdict_orgs = new SortedDictionary<Organization, Library>();
 			sdict_str = new SortedDictionary<string, Library>();
-
+			Library lib;
 			for (int i = 0; i < num; i++)
 			{
-				Library lib = new Library(
-					rand_names[rnd.Next(0, rand_names.Length - 1)],
-					rnd.Next(0, 5),
-					rnd.Next(50, 5000),
-					rnd.Next(1000, 10000));
+				lib = new Library();
 
 				queue_orgs.Enqueue(lib.BaseOrganization);
 				queue_str.Enqueue(lib.BaseOrganization.ToString());
@@ -43,8 +37,25 @@ namespace Lab_11
 				sdict_str.Add(lib.ToString(), lib);
 			}
 
+		}
 
-
+		
+		public string Test1Col()
+		{
+			return Test1() + Test2() + Test3() + Test4();
+		}
+		public string Test2Col()
+		{
+			return Test5() + Test6() + Test7() + Test8();
+		}
+		public string Test3Col()
+		{
+			return Test9() + Test10()
+				+ Test11() + Test12();
+		}
+		public string Test4Col()
+		{
+			return Test13() + Test14() + Test15() + Test16() + Test17() + Test18() + Test19() + Test20();
 		}
 
 		public string Test1()
@@ -54,8 +65,7 @@ namespace Lab_11
 			timer.Start();
 			queue_orgs.Contains(org);
 			timer.Stop();
-			tests += Test1;
-			return $"Поиск первого в коллекции 1(TKey): {timer.ElapsedTicks}";
+			return $"Поиск первого: {timer.ElapsedTicks}\n";
 		}
 		public string Test2()
 		{
@@ -64,8 +74,7 @@ namespace Lab_11
 			timer.Start();
 			queue_orgs.Contains(org);
 			timer.Stop();
-			tests += Test2;
-			return $"Поиск последнего в коллекции 1(TKey): {timer.ElapsedTicks}";
+			return $"Поиск последнего: {timer.ElapsedTicks}\n";
 		}
 		public string Test3()
 		{
@@ -74,8 +83,7 @@ namespace Lab_11
 			timer.Start();
 			queue_orgs.Contains(org);
 			timer.Stop();
-			tests += Test3;
-			return $"Поиск центрального коллекции 1(TKey): {timer.ElapsedTicks}";
+			return $"Поиск центрального: {timer.ElapsedTicks}\n";
 		}
 		public string Test4()
 		{
@@ -84,8 +92,7 @@ namespace Lab_11
 			timer.Start();
 			queue_orgs.Contains(org);
 			timer.Stop();
-			tests += Test4;
-			return $"Поиск несуществуюшего в коллекции 1(TKey): {timer.ElapsedTicks}";
+			return $"Поиск несуществуюшего: {timer.ElapsedTicks}\n";
 		}
 		public string Test5()
 		{
@@ -94,8 +101,7 @@ namespace Lab_11
 			timer.Start();
 			queue_str.Contains(str);
 			timer.Stop();
-			tests += Test5;
-			return $"Поиск первого в коллекции 1(string): {timer.ElapsedTicks}";
+			return $"Поиск первого: {timer.ElapsedTicks}\n";
 		}
 		public string Test6()
 		{
@@ -104,8 +110,7 @@ namespace Lab_11
 			timer.Start();
 			queue_str.Contains(str);
 			timer.Stop();
-			tests += Test6;
-			return $"Поиск последнего в коллекции 1(string): {timer.ElapsedTicks}";
+			return $"Поиск последнего: {timer.ElapsedTicks}\n";
 		}
 		public string Test7()
 		{
@@ -114,8 +119,7 @@ namespace Lab_11
 			timer.Start();
 			queue_str.Contains(str);
 			timer.Stop();
-			tests += Test7;
-			return $"Поиск центрального коллекции 1(string): {timer.ElapsedTicks}";
+			return $"Поиск центрального: {timer.ElapsedTicks}\n";
 		}
 		public string Test8()
 		{
@@ -124,8 +128,7 @@ namespace Lab_11
 			timer.Start();
 			queue_str.Contains(str);
 			timer.Stop();
-			tests += Test8;
-			return $"Поиск несуществуюшего в коллекции 1(string): {timer.ElapsedTicks}";
+			return $"Поиск несуществуюшего: {timer.ElapsedTicks}\n";
 		}
 		public string Test9()
 		{
@@ -134,8 +137,7 @@ namespace Lab_11
 			timer.Start();
 			sdict_orgs.ContainsKey(org);
 			timer.Stop();
-			tests += Test9;
-			return $"Поиск первого в коллекции 2(TKey,TValue): {timer.ElapsedTicks}";
+			return $"Поиск первого ключа: {timer.ElapsedTicks}\n";
 		}
 		public string Test10()
 		{
@@ -144,8 +146,7 @@ namespace Lab_11
 			timer.Start();
 			sdict_orgs.ContainsKey(org);
 			timer.Stop();
-			tests += Test10;
-			return $"Поиск последнего в коллекции 1(string): {timer.ElapsedTicks}";
+			return $"Поиск последнего ключа: {timer.ElapsedTicks}\n";
 		}
 		public string Test11()
 		{
@@ -154,8 +155,7 @@ namespace Lab_11
 			timer.Start();
 			sdict_orgs.ContainsKey(org);
 			timer.Stop();
-			tests += Test11;
-			return $"Поиск центрального ключа коллекции 2(TKey,TValue): {timer.ElapsedTicks}";
+			return $"Поиск центрального ключа: {timer.ElapsedTicks}\n";
 		}
 		public string Test12()
 		{
@@ -164,8 +164,7 @@ namespace Lab_11
 			timer.Start();
 			sdict_orgs.ContainsKey(org);
 			timer.Stop();
-			tests += Test12;
-			return $"Поиск несуществуюшего ключа в коллекции 2(TKey,TValue): {timer.ElapsedTicks}";
+			return $"Поиск несуществуюшего ключа: {timer.ElapsedTicks}\n";
 
 		}
 		public string Test13()
@@ -175,8 +174,7 @@ namespace Lab_11
 			timer.Start();
 			sdict_str.ContainsKey(str);
 			timer.Stop();
-			tests += Test13;
-			return $"Поиск первого ключа в коллекции 2(string,TValue): {timer.ElapsedTicks}";
+			return $"Поиск первого ключа: {timer.ElapsedTicks}\n";
 		}
 		public string Test14()
 		{
@@ -185,8 +183,7 @@ namespace Lab_11
 			timer.Start();
 			sdict_str.ContainsKey(str);
 			timer.Stop();
-			tests += Test14;
-			return $"Поиск первого ключа в коллекции 2(string,TValue): {timer.ElapsedTicks}";
+			return $"Поиск последнего ключа: {timer.ElapsedTicks}\n";
 		}
 		public string Test15()
 		{
@@ -195,8 +192,7 @@ namespace Lab_11
 			timer.Start();
 			sdict_str.ContainsKey(str);
 			timer.Stop();
-			tests += Test15;
-			return $"Поиск центрального ключа коллекции 2(string,TValue): {timer.ElapsedTicks}";
+			return $"Поиск центрального ключа: {timer.ElapsedTicks}\n";
 		}
 		public string Test16()
 		{
@@ -205,8 +201,7 @@ namespace Lab_11
 			timer.Start();
 			sdict_str.ContainsKey(str);
 			timer.Stop();
-			tests += Test16;
-			return $"Поиск несуществуюшего ключа в коллекции 2(string,TValue): {timer.ElapsedTicks}";
+			return $"Поиск несуществуюшего ключа: {timer.ElapsedTicks}\n";
 		}
 		public string Test17()
 		{
@@ -215,8 +210,7 @@ namespace Lab_11
 			timer.Start();
 			sdict_orgs.ContainsValue(org);
 			timer.Stop();
-			tests += Test17;
-			return $"Поиск первого значения в коллекции 2(TKey,TValue): {timer.ElapsedTicks}";
+			return $"Поиск первого значения: {timer.ElapsedTicks}\n";
 		}
 		public string Test18()
 		{
@@ -225,8 +219,7 @@ namespace Lab_11
 			timer.Start();
 			sdict_orgs.ContainsValue(org);
 			timer.Stop();
-			tests += Test18;
-			return $"Поиск последнего значения в коллекции 2(TKey,TValue): {timer.ElapsedTicks}";
+			return $"Поиск последнего значения: {timer.ElapsedTicks}\n";
 		}
 		public string Test19()
 		{
@@ -235,8 +228,7 @@ namespace Lab_11
 			timer.Start();
 			sdict_orgs.ContainsValue(org);
 			timer.Stop();
-			tests += Test19;
-			return $"Поиск центрального значения в коллекции 2(TKey,TValue): {timer.ElapsedTicks}";
+			return $"Поиск центрального значения: {timer.ElapsedTicks}\n";
 		}
 		public string Test20()
 		{
@@ -245,8 +237,7 @@ namespace Lab_11
 			timer.Start();
 			sdict_orgs.ContainsValue(org);
 			timer.Stop();
-			tests += Test20;
-			return $"Поиск несуществуюшего значения в коллекции 2(TKey,TValue): {timer.ElapsedTicks}";
+			return $"Поиск несуществуюшего значения: {timer.ElapsedTicks}\n";
 		}
 	}
 }

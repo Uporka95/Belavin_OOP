@@ -16,10 +16,10 @@ namespace ConsoleApp1
 		Stopwatch timer = new Stopwatch();
 		Random rnd = new Random();
 
-		private Queue<Organization> queue_orgs;
-		private Queue<string> queue_str;
-		private SortedDictionary<Organization, Library> sdict_orgs;
-		private SortedDictionary<string, Library> sdict_str;
+		public Queue<Organization> queue_orgs;
+		public Queue<string> queue_str;
+		public SortedDictionary<Organization, Library> sdict_orgs;
+		public SortedDictionary<string, Library> sdict_str;
 
 		private string[] rand_names = { "Читака", "Глобус", "СССР", "Ботан", "Курилка", "Школьная библиотека" };
 
