@@ -41,16 +41,6 @@ namespace Lab_8
 			
 		}
 
-		private void bFind_Click(object sender, EventArgs e)
-		{
-			FindDiag diag = new FindDiag();
-			diag.Show();
-			if (diag.DialogResult == DialogResult.OK)
-			{
-				if (diag.rbFindByAuthor.Checked) Database.FindByAuthor(diag.mtName.Text);
-				if (diag.rbFindByTime.Checked) Database.FindByDate(diag.dtpFrom.Value, diag.dtpTo.Value);
-			}
-		}
 
 		private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
 		{
@@ -81,7 +71,6 @@ namespace Lab_8
 		private void bOverwrite_Click(object sender, EventArgs e)
 		{
 			saveFileDialog1.ShowDialog();
-			
 		}
 
 

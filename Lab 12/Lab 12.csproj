@@ -43,8 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Library.cs" />
+    <Compile Include="Organization.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UDList.cs" />
+    <Compile Include="UList.cs" />
+    <Compile Include="UTree.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
