@@ -1,78 +1,85 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Курсовая.Form1" Collapsed="true">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+    <Position X="0.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAAAAAAAACAAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AQQAAgAAACAAAAIAAACACAACAAgAAAEAAAQAgAggACA=</HashCode>
       <FileName>Form1.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Курсовая.Program" Collapsed="true">
-    <Position X="2.25" Y="0.5" Width="1.5" />
+    <Position X="2.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Курсовая.Properties.Resources" Collapsed="true">
-    <Position X="0.5" Y="1.5" Width="1.5" />
+    <Position X="0.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAAAAAAAAAAIA=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="Курсовая.Properties.Settings" Collapsed="true">
-    <Position X="2.25" Y="1.5" Width="1.5" />
+    <Position X="2.25" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
   </Class>
   <Class Name="Курсовая.PrintEdition">
-    <Position X="6.5" Y="1.5" Width="1.5" />
+    <Position X="6.5" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAEwAAAAAQAAAAAABEAAAAAAEAAAAA=</HashCode>
-      <FileName>Hierarhy\PrintEdition.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Курсовая.Textbook">
-    <Position X="2.25" Y="7.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Hierarhy\Textbook.cs</FileName>
+      <HashCode>QAAEAAAABAAAAAAEwAAAAAQAAgAAABEAAAAAgEAAAAA=</HashCode>
+      <FileName>lib\PrintEdition.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Курсовая.Fiction">
-    <Position X="5.25" Y="7.5" Width="1.5" />
+    <Position X="5.25" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Hierarhy\Fiction.cs</FileName>
+      <HashCode>QAAAAAAAAAAAAAAEAAKAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>lib\Fiction.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Курсовая.Magazine">
-    <Position X="7.5" Y="7.5" Width="1.5" />
+    <Position X="7.5" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Hierarhy\Magazine.cs</FileName>
+      <HashCode>QAAAAAAAAAAAAAAUAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>lib\Magazine.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Курсовая.Newspaper">
-    <Position X="9.75" Y="7.5" Width="1.5" />
+    <Position X="10.25" Y="8.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAA=</HashCode>
-      <FileName>Hierarhy\Newspaper.cs</FileName>
+      <HashCode>QAAAAAAAAAAAAAAEAAAAAAAAAAAACAAEAAAAAAAAAAA=</HashCode>
+      <FileName>lib\Newspaper.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Курсовая.Periodical">
-    <Position X="8.5" Y="5.75" Width="1.5" />
+    <Position X="8.5" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
-      <FileName>Hierarhy\Periodical.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>lib\Periodical.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Курсовая.Book">
-    <Position X="4" Y="5.75" Width="1.5" />
+    <Position X="4" Y="6" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Book.cs</FileName>
+      <HashCode>AAAAAAAAAQAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>lib\Book.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Курсовая.RndResource">
+    <Position X="2" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAEAEgAAAAAEAYQAAIACAAACCBAAAAACAEAAAAAAAA=</HashCode>
+      <FileName>RndResource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Курсовая.Textbook">
+    <Position X="2.25" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAEAIAAAAAAAAAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>lib\Textbook.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

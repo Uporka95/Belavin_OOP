@@ -1,0 +1,24 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Graph_WPF"
+        xmlns:ed="http://schemas.microsoft.com/expression/2010/drawing" x:Class="Graph_WPF.MainWindow"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="712" Width="1444">
+    <Window.Resources>
+        <ControlTemplate x:Key="ButtonControlTemplate1" TargetType="{x:Type Button}">
+            <Grid Margin="0" Height="100" Width="100">
+                <Ellipse Fill="#FFF4F4F5" Height="80" Stroke="Black" VerticalAlignment="Stretch" Width="85" Margin="0"/>
+            </Grid>
+        </ControlTemplate>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="340"/>
+            <ColumnDefinition Width="1041*"/>
+        </Grid.ColumnDefinitions>
+        <local:GraphView Grid.Column="1" HorizontalAlignment="Left" Height="661" Margin="10,10,0,0" VerticalAlignment="Top" Width="1076"/>
+    </Grid>
+</Window>
